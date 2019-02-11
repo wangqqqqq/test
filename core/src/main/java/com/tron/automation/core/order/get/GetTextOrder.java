@@ -2,6 +2,7 @@ package com.tron.automation.core.order.get;
 
 import com.tron.automation.core.Context;
 import com.tron.automation.core.GetOrder;
+import com.tron.automation.core.OperateResult;
 import com.tron.automation.core.Position;
 
 /**
@@ -11,6 +12,8 @@ public class GetTextOrder implements GetOrder {
     @Override
     public void execute(Position position, Context context) {
 
-        position.element.getText();
+        String text = position.element.getText();
+
+        context.addOperateResult(OperateResult.buildSuccessResult(text));
     }
 }

@@ -9,5 +9,10 @@ public class OperateResult extends Result{
      */
     public String data;
 
-
+    public static OperateResult buildSuccessResult(String data){
+        OperateResult operateResult = new OperateResult();
+        operateResult.success = true;
+        operateResult.data = data;
+        return operateResult;
+    }
 }

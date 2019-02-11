@@ -22,4 +22,12 @@ public class Context {
      * 操作结果
      */
     public List<OperateResult> operateResultList;
+
+    /**
+     * 添加操作结果
+     * @param operateResult
+     */
+    public void addOperateResult(OperateResult operateResult) {
+        operateResultList.add(operateResult);
+    }
 }
