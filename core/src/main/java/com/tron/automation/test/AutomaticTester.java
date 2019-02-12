@@ -1,7 +1,5 @@
 package com.tron.automation.test;
 
-import com.typesafe.config.Config;
-import com.typesafe.config.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -18,49 +16,51 @@ public class AutomaticTester {
 
     private TestCaseFileParse testCaseFileParse;
 
-    public AutomaticTester(TestCaseFileParse testCaseFileParse) {
+    /**
+     * 用户数据路径
+     */
+    private String userDataDir;
 
-        this.testCaseFileParse = testCaseFileParse;
-    }
+    /**
+     *
+     */
+    private String url;
 
-    private static String language = "english";
+    /**
+     *
+     */
+    private String chromeDriverServiceUrl;
+
+    /**
+     * 测试用例文件路径
+     */
+    private String testCaseFilePath;
+
+    /**
+     * 浏览器驱动
+     */
     private WebDriver driver;
-//    WebDriverWait wait;
-    private Actions action;
-    Config conf;
 
     /**
      * 初始化  一些配置信息
      */
-    public void init() {
+    private void init() {
         ChromeOptions chromeOptions = new ChromeOptions();
-        conf = ConfigFactory.parseFile(new File("src/main/resources/trondice-init.conf"));
-        chromeOptions.addArguments(conf.getString("userDataDir"));
-        System.setProperty("webdriver.chrome.driver", conf.getString("chromedriverServiceUrl"));//chromedriver服务地址
+        chromeOptions.addArguments(userDataDir);
+        System.setProperty("webdriver.chrome.driver", chromeDriverServiceUrl);//chromedriver服务地址
         driver = new ChromeDriver(chromeOptions); //新建一个WebDriver 的对象
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        action = new Actions(driver);
-        driver.get(conf.getString("url"));//打开指定的网站
-//        wait = new WebDriverWait(driver, 10); // 最多等10秒
-        try {
-            Thread.sleep(10000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        driver.navigate().refresh();
-        try {
-            Thread.sleep(7000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     /**
      * 启动测试
-     * @param filePath
      */
-    public void startUp(String filePath) {
-        OneTest oneTest = testCaseFileParse.parse(filePath);
+    public void startUp() {
+        init();
+
+        OneTest oneTest = testCaseFileParse.parse(testCaseFilePath, driver);
         oneTest.start();
+
+        driver.close();
     }
 }
