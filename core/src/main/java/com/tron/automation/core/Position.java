@@ -2,6 +2,7 @@ package com.tron.automation.core;
 
 import com.tron.automation.enums.ParamTypeEnum;
 import com.tron.automation.enums.PositionTypeEnum;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -23,9 +24,17 @@ public class Position {
      */
     public String positionUrl;
 
-    public WebElement getElement() {
+    public WebElement getElement(WebDriver driver) {
+        if (element != null) {
+            return element;
+        }
+
+        WebElement webElement = Radar.accurateLocate(positionType, positionUrl, null);
+        this.element = webElement;
         return element;
     }
+
+
 
     public void setElement(WebElement element) {
         this.element = element;

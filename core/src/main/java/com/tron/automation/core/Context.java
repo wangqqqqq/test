@@ -1,5 +1,6 @@
 package com.tron.automation.core;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
@@ -12,6 +13,11 @@ public class Context {
      * 鼠标
      */
     public Actions actions;
+
+    /**
+     *  浏览器驱动
+     */
+    public WebDriver driver;
 
     /**
      * 操作结果

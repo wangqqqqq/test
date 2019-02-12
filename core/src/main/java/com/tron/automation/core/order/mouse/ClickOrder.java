@@ -15,6 +15,6 @@ public class ClickOrder implements MouseOperationOrder {
     @Override
     public void execute(Position position, Param param, Context context) {
 
-        context.actions.click(position.element);
+        context.actions.click(position.getElement(context.driver));
     }
 }
