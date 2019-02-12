@@ -14,6 +14,6 @@ public class DoubleClickOrder implements MouseOperationOrder {
     @Override
     public void execute(Position position, Param param, Context context) {
 
-        context.actions.click(position.element);
+        context.actions.doubleClick(position.element);
     }
 }

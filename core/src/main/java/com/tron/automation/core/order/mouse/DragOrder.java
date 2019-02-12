@@ -6,7 +6,7 @@ import com.tron.automation.core.Param;
 import com.tron.automation.core.Position;
 
 /**
- * 双击操作命令
+ * 拖拽操作命令
  */
 public class DragOrder implements MouseOperationOrder {
     public static final DragOrder INSTANCE = new DragOrder();
