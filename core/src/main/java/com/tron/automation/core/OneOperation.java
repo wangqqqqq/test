@@ -1,12 +1,16 @@
 package com.tron.automation.core;
 
+import com.tron.automation.enums.ParamTypeEnum;
+
 /**
  * 一次操作
  */
-public abstract class OneOperation implements Operate{
+public abstract class OneOperation implements Operate {
     protected Position position;
 
     protected Order order;
+
+    protected Param param;
 
     /**
      * 执行操作之前做的事情

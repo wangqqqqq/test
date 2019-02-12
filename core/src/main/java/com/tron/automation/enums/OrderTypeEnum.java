@@ -5,6 +5,7 @@ import com.tron.automation.core.order.get.GetTextOrder;
 import com.tron.automation.core.order.key.DefaultSendKeysOrder;
 import com.tron.automation.core.order.mouse.ClickOrder;
 import com.tron.automation.core.order.mouse.DoubleClickOrder;
+import com.tron.automation.core.order.mouse.DragOrder;
 
 /**
  * 命令类型枚举
@@ -29,7 +30,12 @@ public enum OrderTypeEnum {
     /**
      * 按键（数字、字母、特殊）
      */
-    SEND_KEYS(DefaultSendKeysOrder.INSTANCE);
+    SEND_KEYS(DefaultSendKeysOrder.INSTANCE),
+
+    /**
+     * 拖拽
+     */
+    DRAG(DragOrder.INSTANCE);
 
     Order order;
 
