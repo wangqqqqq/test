@@ -11,5 +11,8 @@ public class Position {
      */
     public WebElement element;
 
-
+    /**
+     * 入参
+     */
+    public String param;
 }

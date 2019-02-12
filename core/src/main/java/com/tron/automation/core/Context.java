@@ -14,11 +14,6 @@ public class Context {
     public Actions actions;
 
     /**
-     * 入参
-     */
-    public String param;
-
-    /**
      * 操作结果
      */
     public List<OperateResult> operateResultList;

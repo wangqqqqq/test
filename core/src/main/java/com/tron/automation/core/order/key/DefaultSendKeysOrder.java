@@ -8,9 +8,11 @@ import com.tron.automation.core.Position;
  * 默认的输入 键 命名
  */
 public class DefaultSendKeysOrder implements KeyboardOrder {
+    public static final DefaultSendKeysOrder INSTANCE = new DefaultSendKeysOrder();
 
     @Override
     public void execute(Position position, Context context) {
-        position.element.sendKeys(context.param);
+
+        position.element.sendKeys(position.param);
     }
 }
