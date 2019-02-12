@@ -5,17 +5,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 /**
- * Id定位器
+ * class定位器
  */
-public class IdLocater implements Locate{
-    public static final Locate INSTANCE = new IdLocater();
+public class ClassLocater implements Locate{
+    public static final Locate INSTANCE = new ClassLocater();
 
-    private IdLocater() {
+    private ClassLocater() {
     }
 
     @Override
     public WebElement goToLocate(String positionUrl, WebDriver driver) {
 
-        return driver.findElement(By.id(positionUrl));
+        return driver.findElement(By.className(positionUrl));
     }
 }

@@ -1,8 +1,6 @@
 package com.tron.automation.enums;
 
-import com.tron.automation.core.locate.IdLocater;
-import com.tron.automation.core.locate.Locate;
-
+import com.tron.automation.core.locate.*;
 
 
 /**
@@ -10,13 +8,13 @@ import com.tron.automation.core.locate.Locate;
  */
 public enum  PositionTypeEnum {
 
-    XPATH(null),
+    XPATH(XPathLocater.INSTANCE),
 
-    CLASS(null),
+    CLASS(ClassLocater.INSTANCE),
 
     ID(IdLocater.INSTANCE),
 
-    NAME(null),
+    NAME(NameLocater.INSTANCE),
 
     /**
      * 先根据class获取元素列表再通过元素text来定位
