@@ -11,7 +11,7 @@ public class GetTextOrder implements GetOrder {
     @Override
     public void execute(Position position, Param param, Context context) {
 
-        String text = position.element.getText();
+        String text = position.getElement(context.driver).getText();
 
         context.addOperateResult(OperateResult.buildSuccessResult(text));
     }

@@ -14,6 +14,6 @@ public class DragOrder implements MouseOperationOrder {
     @Override
     public void execute(Position position, Param param, Context context) {
 
-        context.actions.dragAndDropBy(position.element, Integer.parseInt(param.data), 0).build().perform();
+        context.actions.dragAndDropBy(position.getElement(context.driver), Integer.parseInt(param.data), 0).build().perform();
     }
 }

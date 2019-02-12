@@ -14,6 +14,6 @@ public class DefaultSendKeysOrder implements KeyboardOrder {
     @Override
     public void execute(Position position, Param param, Context context) {
 
-        position.element.sendKeys(param.data);
+        position.getElement(context.driver).sendKeys(param.data);
     }
 }

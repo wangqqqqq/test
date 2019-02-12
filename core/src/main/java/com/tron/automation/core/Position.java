@@ -12,7 +12,7 @@ public class Position {
     /**
      * 位置
      */
-    public WebElement element;
+    private WebElement element;
 
     /**
      * 定位方式
