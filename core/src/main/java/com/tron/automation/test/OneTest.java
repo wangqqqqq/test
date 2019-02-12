@@ -16,4 +16,12 @@ public class OneTest {
         }
 
     }
+
+    public List<TestCase> getTestCaseList() {
+        return testCaseList;
+    }
+
+    public void setTestCaseList(List<TestCase> testCaseList) {
+        this.testCaseList = testCaseList;
+    }
 }

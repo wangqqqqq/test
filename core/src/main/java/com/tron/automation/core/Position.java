@@ -22,4 +22,28 @@ public class Position {
      * 元素路径
      */
     public String positionUrl;
+
+    public WebElement getElement() {
+        return element;
+    }
+
+    public void setElement(WebElement element) {
+        this.element = element;
+    }
+
+    public PositionTypeEnum getPositionType() {
+        return positionType;
+    }
+
+    public void setPositionType(PositionTypeEnum positionType) {
+        this.positionType = positionType;
+    }
+
+    public String getPositionUrl() {
+        return positionUrl;
+    }
+
+    public void setPositionUrl(String positionUrl) {
+        this.positionUrl = positionUrl;
+    }
 }

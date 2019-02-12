@@ -9,7 +9,7 @@ public class OperationGroup{
 
     private List<OneOperation> oneOperationList;
 
-    private int next;
+    private int next = 0;
 
     /**
      * 上下文环境，一组操作拥有一个
@@ -27,5 +27,9 @@ public class OperationGroup{
     public List<OperateResult> getOperateResultList() {
 
         return context.operateResultList;
+    }
+
+    public void setOneOperationList(List<OneOperation> oneOperationList) {
+        this.oneOperationList = oneOperationList;
     }
 }

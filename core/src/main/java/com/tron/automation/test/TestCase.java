@@ -26,6 +26,30 @@ public class TestCase {
      */
     private TestResultHandler testResultHandler;
 
+    public OperationGroup getOperationGroup() {
+        return operationGroup;
+    }
+
+    public void setOperationGroup(OperationGroup operationGroup) {
+        this.operationGroup = operationGroup;
+    }
+
+    public String getExpectedResult() {
+        return expectedResult;
+    }
+
+    public void setExpectedResult(String expectedResult) {
+        this.expectedResult = expectedResult;
+    }
+
+    public TestResultHandler getTestResultHandler() {
+        return testResultHandler;
+    }
+
+    public void setTestResultHandler(TestResultHandler testResultHandler) {
+        this.testResultHandler = testResultHandler;
+    }
+
     /**
      * 生成测试结果
      */
@@ -45,4 +69,5 @@ public class TestCase {
 
         generateTestReport();
     }
+
 }

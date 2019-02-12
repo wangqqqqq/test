@@ -16,7 +16,7 @@ public class DefaultOneOperation extends OneOperation {
 
     @Override
     public void doOperate(Context context) {
-        order.execute(position, context);
+        order.execute(position, param, context);
     }
 
     @Override
