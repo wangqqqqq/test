@@ -53,21 +53,23 @@ public class TestCase {
     /**
      * 生成测试结果
      */
-    private void generateTestReport() {
+    private Result generateTestReport() {
         List<OperateResult> operateResultList = operationGroup.getOperateResultList();
 
         Result handlerResult = testResultHandler.handler(operateResultList, expectedResult);
         //生成测试结果
+
+        return handlerResult;
 
     }
 
     /**
      * 开始测试
      */
-    public void startTest() {
+    public Result startTest() {
         operationGroup.executeNextOperate();
 
-        generateTestReport();
+        return generateTestReport();
     }
 
 }
