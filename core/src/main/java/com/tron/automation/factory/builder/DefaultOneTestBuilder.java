@@ -43,7 +43,9 @@ public class DefaultOneTestBuilder implements OneTestBuilder<OneTestBuildParamDt
                 OperateDescriptionDto operateDescriptionDto = operateDescriptionDtoList.get(j);
 
                 oneOperation.setOrder(OrderTypeEnum.valueOf(operateDescriptionDto.getOrderType()).getOrder());
-                oneOperation.setParam(new Param(operateDescriptionDto.getParam(), ParamTypeEnum.valueOf(operateDescriptionDto.getParamType())));
+                if ((!operateDescriptionDto.getParam().equals(""))&&(!operateDescriptionDto.getParamType().equals(""))) {
+                    oneOperation.setParam(new Param(operateDescriptionDto.getParam(), ParamTypeEnum.valueOf(operateDescriptionDto.getParamType())));
+                }
                 oneOperation.setPosition(new Position(PositionTypeEnum.valueOf(operateDescriptionDto.getPositionType()),operateDescriptionDto.getPositionUrl()));
             }
         }

@@ -16,6 +16,7 @@ public class XPathLocater implements Locate{
     @Override
     public WebElement goToLocate(String positionUrl, WebDriver driver) {
 
-        return driver.findElement(By.xpath(positionUrl));
+//        return driver.findElement(By.xpath(positionUrl));
+        return driver.findElement(By.xpath("//*[@id:\"__layout\"]/div/div/div/div/div/div[3]/div[2]/div[2]/div/div/div[2]/div/div[1]/div[2]/div/input"));
     }
 }

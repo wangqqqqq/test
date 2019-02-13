@@ -17,6 +17,7 @@ public class TestCaseItemConverter {
 
         for (List<String> values : list) {
             TestCaseItemDto testCaseItemDto = new TestCaseItemDto();
+//            JSON.
             List<OperateDescriptionDto> operateDescriptionDtos = JSON.parseArray(values.get(0), OperateDescriptionDto.class);
             testCaseItemDto.setOperateDescriptionDtoList(operateDescriptionDtos);
             testCaseItemDto.setExpectedResultValue(values.get(1));
