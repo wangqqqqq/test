@@ -3,10 +3,16 @@ package com.tron.automation.test;
 import com.google.common.base.Enums;
 import com.tron.automation.core.*;
 import com.tron.automation.core.order.mouse.ClickOrder;
+import com.tron.automation.dto.OneTestBuildParamDto;
+import com.tron.automation.dto.TestCaseItemDto;
 import com.tron.automation.enums.OrderTypeEnum;
 import com.tron.automation.enums.ParamTypeEnum;
 import com.tron.automation.enums.PositionTypeEnum;
+import com.tron.automation.factory.builder.DefaultOneTestBuilder;
+import com.tron.automation.factory.builder.OneTestBuilder;
+import com.tron.automation.factory.builder.OneTestDirector;
 import com.tron.automation.util.ExcelUtil;
+import com.tron.automation.util.converter.TestCaseItemConverter;
 import org.apache.commons.lang3.EnumUtils;
 import org.openqa.selenium.WebDriver;
 
@@ -18,11 +24,15 @@ public class TestCaseFileParseImpl implements TestCaseFileParse {
 
     @Override
     public OneTest parse(String FilePath, WebDriver webDriver) {
-        Context context = new Context();
-        context.driver = webDriver;
-        ExcelUtil.readExcel(new File("/Users/wqq/Documents/trondice-testcase.xlsx"));
+        List<List> list = ExcelUtil.readExcel(new File("/Users/wqq/Documents/trondice-testcase.xlsx"));
+        list.remove(0);
 
-        return null;
+        TestCaseItemDto testCaseItemDto = TestCaseItemConverter.convert(list);
+        OneTestBuildParamDto oneTestBuildParamDto = new OneTestBuildParamDto(testCaseItemDto, webDriver);
+
+        OneTest oneTest = OneTestDirector.createOneTest(new DefaultOneTestBuilder(), oneTestBuildParamDto);
+
+        return oneTest;
     }
 
         /*Config conf = conf = ConfigFactory.parseFile(new File("src/main/resources/trondice-testcase.conf"));
