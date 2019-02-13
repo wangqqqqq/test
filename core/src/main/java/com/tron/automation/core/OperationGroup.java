@@ -29,6 +29,14 @@ public class OperationGroup{
         return context.operateResultList;
     }
 
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
     public void setOneOperationList(List<OneOperation> oneOperationList) {
         this.oneOperationList = oneOperationList;
     }

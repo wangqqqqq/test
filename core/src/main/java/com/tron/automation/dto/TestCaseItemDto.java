@@ -1,5 +1,7 @@
 package com.tron.automation.dto;
 
+import java.util.List;
+
 /**
  * 测试用例项
  */
@@ -7,19 +9,19 @@ public class TestCaseItemDto {
     /**
      * 操作组
      */
-    private String operateGroupValue;
+    private List<OperateDescriptionDto> operateDescriptionDtoList;
 
     /**
      * 期望结果
      */
     private String expectedResultValue;
 
-    public String getOperateGroupValue() {
-        return operateGroupValue;
+    public List<OperateDescriptionDto> getOperateDescriptionDtoList() {
+        return operateDescriptionDtoList;
     }
 
-    public void setOperateGroupValue(String operateGroupValue) {
-        this.operateGroupValue = operateGroupValue;
+    public void setOperateDescriptionDtoList(List<OperateDescriptionDto> operateDescriptionDtoList) {
+        this.operateDescriptionDtoList = operateDescriptionDtoList;
     }
 
     public String getExpectedResultValue() {
