@@ -27,8 +27,8 @@ public class TestCaseFileParseImpl implements TestCaseFileParse {
         List<List> list = ExcelUtil.readExcel(new File("/Users/wqq/Documents/trondice-testcase.xlsx"));
         list.remove(0);
 
-        TestCaseItemDto testCaseItemDto = TestCaseItemConverter.convert(list);
-        OneTestBuildParamDto oneTestBuildParamDto = new OneTestBuildParamDto(testCaseItemDto, webDriver);
+        List<TestCaseItemDto> testCaseItemDtoList = TestCaseItemConverter.convert(list);
+        OneTestBuildParamDto oneTestBuildParamDto = new OneTestBuildParamDto(testCaseItemDtoList, webDriver);
 
         OneTest oneTest = OneTestDirector.createOneTest(new DefaultOneTestBuilder(), oneTestBuildParamDto);
 

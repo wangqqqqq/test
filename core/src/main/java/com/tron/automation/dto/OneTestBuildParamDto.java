@@ -2,19 +2,21 @@ package com.tron.automation.dto;
 
 import org.openqa.selenium.WebDriver;
 
+import java.util.List;
+
 public class OneTestBuildParamDto {
 
-    private TestCaseItemDto testCaseItemDto;
+    private List<TestCaseItemDto> testCaseItemDtoList;
 
     private WebDriver webDriver;
 
-    public OneTestBuildParamDto(TestCaseItemDto testCaseItemDto, WebDriver webDriver) {
-        this.testCaseItemDto = testCaseItemDto;
+    public OneTestBuildParamDto(List<TestCaseItemDto> testCaseItemDtoList, WebDriver webDriver) {
+        this.testCaseItemDtoList = testCaseItemDtoList;
         this.webDriver = webDriver;
     }
 
-    public TestCaseItemDto getTestCaseItemDto() {
-        return testCaseItemDto;
+    public List<TestCaseItemDto> getTestCaseItemDtoList() {
+        return testCaseItemDtoList;
     }
 
     public WebDriver getWebDriver() {
