@@ -24,6 +24,34 @@ public class Context {
      */
     public List<OperateResult> operateResultList;
 
+    public Context(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public Actions getActions() {
+        return actions;
+    }
+
+    public void setActions(Actions actions) {
+        this.actions = actions;
+    }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public List<OperateResult> getOperateResultList() {
+        return operateResultList;
+    }
+
+    public void setOperateResultList(List<OperateResult> operateResultList) {
+        this.operateResultList = operateResultList;
+    }
+
     /**
      * 添加操作结果
      * @param operateResult
