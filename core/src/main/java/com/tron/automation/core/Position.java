@@ -33,7 +33,7 @@ public class Position {
             return element;
         }
 
-        WebElement webElement = Radar.accurateLocate(positionType, positionUrl, null);
+        WebElement webElement = Radar.accurateLocate(positionType, positionUrl, driver);
         this.element = webElement;
         return element;
     }
