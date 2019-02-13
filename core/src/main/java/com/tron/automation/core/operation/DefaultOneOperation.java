@@ -1,4 +1,8 @@
-package com.tron.automation.core;
+package com.tron.automation.core.operation;
+
+import com.tron.automation.core.Context;
+import com.tron.automation.core.OneOperation;
+import com.tron.automation.core.OperationGroup;
 
 /**
  * 默认的操作
