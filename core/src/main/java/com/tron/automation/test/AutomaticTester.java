@@ -22,12 +22,12 @@ public class AutomaticTester {
     private String userDataDir;
 
     /**
-     *
+     * 测试网址
      */
     private String url;
 
     /**
-     *
+     * chromedriver服务地址
      */
     private String chromeDriverServiceUrl;
 

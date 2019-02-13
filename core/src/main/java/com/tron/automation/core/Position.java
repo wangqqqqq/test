@@ -1,6 +1,5 @@
 package com.tron.automation.core;
 
-import com.tron.automation.enums.ParamTypeEnum;
 import com.tron.automation.enums.PositionTypeEnum;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
