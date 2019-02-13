@@ -26,6 +26,7 @@ public class Context {
 
     public Context(WebDriver driver) {
         this.driver = driver;
+        this.actions = new Actions(driver);
     }
 
     public Actions getActions() {

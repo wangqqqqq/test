@@ -40,4 +40,8 @@ public class OperationGroup{
     public void setOneOperationList(List<OneOperation> oneOperationList) {
         this.oneOperationList = oneOperationList;
     }
+
+    public List<OneOperation> getOneOperationList() {
+        return oneOperationList;
+    }
 }

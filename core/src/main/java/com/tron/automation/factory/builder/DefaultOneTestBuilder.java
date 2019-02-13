@@ -1,12 +1,12 @@
 package com.tron.automation.factory.builder;
 
-import com.tron.automation.core.Context;
-import com.tron.automation.core.DefaultOneOperation;
-import com.tron.automation.core.OneOperation;
-import com.tron.automation.core.OperationGroup;
+import com.tron.automation.core.*;
 import com.tron.automation.dto.OneTestBuildParamDto;
 import com.tron.automation.dto.OperateDescriptionDto;
 import com.tron.automation.dto.TestCaseItemDto;
+import com.tron.automation.enums.OrderTypeEnum;
+import com.tron.automation.enums.ParamTypeEnum;
+import com.tron.automation.enums.PositionTypeEnum;
 import com.tron.automation.test.OneTest;
 import com.tron.automation.test.TestCase;
 import com.tron.automation.test.TestResultHandlerImpl;
@@ -26,7 +26,26 @@ public class DefaultOneTestBuilder implements OneTestBuilder<OneTestBuildParamDt
 
     @Override
     public void buildOneOperation() {
+        List<TestCase> testCaseList = oneTest.getTestCaseList();
+        List<TestCaseItemDto> testCaseItemDtoList = oneTestBuildParamDto.getTestCaseItemDtoList();
 
+        for (int i = 0; i < testCaseList.size(); i++) {
+            TestCase testCase = testCaseList.get(i);
+            OperationGroup operationGroup = testCase.getOperationGroup();
+            List<OneOperation> oneOperationList = operationGroup.getOneOperationList();
+
+            TestCaseItemDto testCaseItemDto = testCaseItemDtoList.get(i);
+            List<OperateDescriptionDto> operateDescriptionDtoList = testCaseItemDto.getOperateDescriptionDtoList();
+
+            for (int j = 0; j < oneOperationList.size(); j++) {
+                OneOperation oneOperation = oneOperationList.get(j);
+                OperateDescriptionDto operateDescriptionDto = operateDescriptionDtoList.get(j);
+
+                oneOperation.setOrder(OrderTypeEnum.valueOf(operateDescriptionDto.getOrderType()).getOrder());
+                oneOperation.setParam(new Param(operateDescriptionDto.getParam(), ParamTypeEnum.valueOf(operateDescriptionDto.getParamType())));
+                oneOperation.setPosition(new Position(PositionTypeEnum.valueOf(operateDescriptionDto.getPositionType()),operateDescriptionDto.getPositionUrl()));
+            }
+        }
     }
 
     @Override

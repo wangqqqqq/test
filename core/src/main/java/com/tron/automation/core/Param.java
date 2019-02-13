@@ -17,6 +17,11 @@ public class Param {
      */
     public ParamTypeEnum type;
 
+    public Param(String data, ParamTypeEnum type) {
+        this.data = data;
+        this.type = type;
+    }
+
     public String getData() {
         return data;
     }

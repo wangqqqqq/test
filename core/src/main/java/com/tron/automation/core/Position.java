@@ -23,6 +23,11 @@ public class Position {
      */
     public String positionUrl;
 
+    public Position(PositionTypeEnum positionType, String positionUrl) {
+        this.positionType = positionType;
+        this.positionUrl = positionUrl;
+    }
+
     public WebElement getElement(WebDriver driver) {
         if (element != null) {
             return element;
