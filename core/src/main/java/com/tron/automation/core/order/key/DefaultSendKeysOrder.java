@@ -1,9 +1,7 @@
 package com.tron.automation.core.order.key;
 
-import com.tron.automation.core.Context;
-import com.tron.automation.core.KeyboardOrder;
-import com.tron.automation.core.Param;
-import com.tron.automation.core.Position;
+import com.tron.automation.core.*;
+import org.openqa.selenium.WebElement;
 
 /**
  * 默认的输入 键 命名
@@ -13,7 +11,12 @@ public class DefaultSendKeysOrder implements KeyboardOrder {
 
     @Override
     public void execute(Position position, Param param, Context context) {
+        WebElement element = position.getElement(context.driver);
+        if(element==null) {
+            context.addOperateResult(OperateResult.buildElementNotExistResult());
+        }
 
-        position.getElement(context.driver).sendKeys(param.data);
+        element.sendKeys(param.data);
+        context.addOperateResult(OperateResult.buildSuccessResult());
     }
 }

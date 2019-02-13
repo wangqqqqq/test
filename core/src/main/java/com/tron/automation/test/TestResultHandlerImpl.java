@@ -14,10 +14,14 @@ public class TestResultHandlerImpl implements TestResultHandler {
             OperateResult operateResult = operateResults.get(i);
             Boolean success = operateResult.getSuccess();
             if(!success) {
-                result.setSuccess(false);
+                result.setSuccess(success);
+                result.setCode(operateResult.getCode());
+                result.setMessage(operateResult.getMessage());
+            } else {
+                // 待补充
             }
         }
         
-        return null;
+        return result;
     }
 }

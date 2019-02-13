@@ -1,9 +1,7 @@
 package com.tron.automation.core.order.mouse;
 
-import com.tron.automation.core.Context;
-import com.tron.automation.core.MouseOperationOrder;
-import com.tron.automation.core.Param;
-import com.tron.automation.core.Position;
+import com.tron.automation.core.*;
+import org.openqa.selenium.WebElement;
 
 /**
  * 拖拽操作命令
@@ -13,7 +11,12 @@ public class DragOrder implements MouseOperationOrder {
 
     @Override
     public void execute(Position position, Param param, Context context) {
+        WebElement element = position.getElement(context.driver);
+        if(element==null) {
+            context.addOperateResult(OperateResult.buildElementNotExistResult());
+        }
 
-        context.actions.dragAndDropBy(position.getElement(context.driver), Integer.parseInt(param.data), 0).build().perform();
+        context.actions.dragAndDropBy(element, Integer.parseInt(param.data), 0).build().perform();
+        context.addOperateResult(OperateResult.buildSuccessResult());
     }
 }

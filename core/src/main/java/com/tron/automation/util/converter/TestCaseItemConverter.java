@@ -1,5 +1,6 @@
 package com.tron.automation.util.converter;
 
+import com.tron.automation.dto.OperateDescriptionDto;
 import com.tron.automation.dto.TestCaseItemDto;
 
 import java.util.ArrayList;
@@ -15,7 +16,9 @@ public class TestCaseItemConverter {
 
         for (List<String> values : list) {
             TestCaseItemDto testCaseItemDto = new TestCaseItemDto();
-            testCaseItemDto.setOperateGroupValue(values.get(0));
+//            testCaseItemDto.setOperateGroupValue();
+
+            OperateDescriptionDto operateDescriptionDto = new OperateDescriptionDto();
             testCaseItemDto.setExpectedResultValue(values.get(1));
 
             testCaseItemDtoList.add(testCaseItemDto);
