@@ -1,13 +1,16 @@
 package com.tron.automation.test;
 
 import com.tron.automation.util.SleepUtil;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -51,7 +54,7 @@ public class AutomaticTester {
         OneTest oneTest = testCaseFileParse.parse(testCaseFilePath, driver);
         oneTest.start();
 
-        driver.quit();
+//        driver.quit();
     }
 
     /**
@@ -64,10 +67,11 @@ public class AutomaticTester {
         driver = new ChromeDriver(chromeOptions); //新建一个WebDriver 的对象
         driver.get("http://47.90.249.61:8080/");
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        SleepUtil.sleep(7000);
+        SleepUtil.sleep(10000);
         driver.navigate().refresh();
         SleepUtil.sleep(7000);
     }
+
 
     public TestCaseFileParse getTestCaseFileParse() {
         return testCaseFileParse;

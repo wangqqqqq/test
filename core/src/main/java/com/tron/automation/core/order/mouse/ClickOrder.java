@@ -17,7 +17,8 @@ public class ClickOrder implements MouseOperationOrder {
             context.addOperateResult(OperateResult.buildElementNotExistResult());
         }
 
-        context.actions.click(element);
+        context.actions.moveToElement(element).click().perform();
+//        element.click();
         context.addOperateResult(OperateResult.buildSuccessResult());
     }
 }

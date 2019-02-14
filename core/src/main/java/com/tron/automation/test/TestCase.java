@@ -1,11 +1,14 @@
 package com.tron.automation.test;
 
-import com.tron.automation.core.Context;
 import com.tron.automation.core.OperateResult;
 import com.tron.automation.core.OperationGroup;
 import com.tron.automation.core.Result;
+import com.tron.automation.util.ExcelUtil;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 测试用例
@@ -22,7 +25,7 @@ public class TestCase {
     private String expectedResult;
 
     /**
-     *  操作结果与预期结果处理者
+     * 操作结果与预期结果处理者
      */
     private TestResultHandler testResultHandler;
 
@@ -57,7 +60,14 @@ public class TestCase {
         List<OperateResult> operateResultList = operationGroup.getOperateResultList();
 
         Result handlerResult = testResultHandler.handler(operateResultList, expectedResult);
-        //生成测试结果
+
+        // 往excel中输出测试结果
+        List<Map> mapList = new ArrayList<Map>();
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("isSuccess", handlerResult.getSuccess().equals(true) ? "SUCCESS" : "FAIL");
+        map.put("code", handlerResult.getCode().toString());
+        map.put("message",handlerResult.getMessage());
+        ExcelUtil.writeExcel(mapList, 3, "");
 
         return handlerResult;
 

@@ -2,6 +2,9 @@ package com.tron.automation.core;
 
 import com.tron.automation.enums.ParamTypeEnum;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+
 /**
  * 入参类
  */
@@ -20,6 +23,16 @@ public class Param {
     public Param(String data, ParamTypeEnum type) {
         this.data = data;
         this.type = type;
+    }
+
+    public Object getParam(){
+        if (type==ParamTypeEnum.BIGDECIMAL) {
+            return  new BigDecimal(data);
+        } else if (type==ParamTypeEnum.INT){
+            return Integer.parseInt(data);
+        }
+
+        return data;
     }
 
     public String getData() {

@@ -32,7 +32,7 @@ public class ExcelUtil {
                 Row row = sheet.createRow(j + 1);
                 // 得到要插入的每一条记录
                 Map dataMap = dataList.get(j);
-                String name = dataMap.get("success").toString();
+                String name = dataMap.get("isSuccess").toString();
                 String address = dataMap.get("code").toString();
                 String phone = dataMap.get("message").toString();
                 for (int k = 0; k <= columnNumCount; k++) {

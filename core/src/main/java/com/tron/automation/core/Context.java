@@ -3,6 +3,7 @@ package com.tron.automation.core;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public class Context {
     /**
      * 操作结果
      */
-    public List<OperateResult> operateResultList;
+    public List<OperateResult> operateResultList = new ArrayList<OperateResult>();
 
     public Context(WebDriver driver) {
         this.driver = driver;

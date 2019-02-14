@@ -1,7 +1,10 @@
 package com.tron.automation.core.order.mouse;
 
 import com.tron.automation.core.*;
+import com.tron.automation.util.SleepUtil;
 import org.openqa.selenium.WebElement;
+
+import java.math.BigDecimal;
 
 /**
  * 拖拽操作命令
@@ -16,7 +19,7 @@ public class DragOrder implements MouseOperationOrder {
             context.addOperateResult(OperateResult.buildElementNotExistResult());
         }
 
-        context.actions.dragAndDropBy(element, Integer.parseInt(param.data), 0).build().perform();
+        context.actions.dragAndDropBy(element, new BigDecimal(param.data).intValue(), 0).build().perform();
         context.addOperateResult(OperateResult.buildSuccessResult());
     }
 }
