@@ -14,12 +14,13 @@ import java.util.List;
 public class TronDiceTestCaseFileParseImpl implements TestCaseFileParse {
 
     @Override
-    public OneTest parse(String FilePath, WebDriver webDriver) {
-        List<List> list = ExcelUtil.readExcel(new File(FilePath));
+    public OneTest parse(String filePath, WebDriver webDriver) {
+        List<List> list = ExcelUtil.readExcel(new File(filePath));
         list.remove(0);
 
         List<TestCaseItemDto> testCaseItemDtoList = TestCaseItemConverter.convert(list);
-        OneTestBuildParamDto oneTestBuildParamDto = new OneTestBuildParamDto(testCaseItemDtoList, webDriver);
+        String testResultFilePath = filePath.replace("testcase", "testResult");
+        OneTestBuildParamDto oneTestBuildParamDto = new OneTestBuildParamDto(testCaseItemDtoList, webDriver, testResultFilePath);
 
         OneTest oneTest = OneTestDirector.createOneTest(new DefaultOneTestBuilder(), oneTestBuildParamDto);
 

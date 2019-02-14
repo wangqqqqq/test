@@ -11,8 +11,8 @@ public interface TestCaseFileParse {
 
     /**
      * 进行解析
-     * @param FilePath
+     * @param filePath
      * @return
      */
-    OneTest parse(String FilePath, WebDriver webDriver);
+    OneTest parse(String filePath, WebDriver webDriver);
 }

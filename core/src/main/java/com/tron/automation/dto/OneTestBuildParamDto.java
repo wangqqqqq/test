@@ -10,9 +10,15 @@ public class OneTestBuildParamDto {
 
     private WebDriver webDriver;
 
-    public OneTestBuildParamDto(List<TestCaseItemDto> testCaseItemDtoList, WebDriver webDriver) {
+    /**
+     * 测试结果文件路径
+     */
+    private String testResultFilePath;
+
+    public OneTestBuildParamDto(List<TestCaseItemDto> testCaseItemDtoList, WebDriver webDriver, String testResultFilePath) {
         this.testCaseItemDtoList = testCaseItemDtoList;
         this.webDriver = webDriver;
+        this.testResultFilePath = testResultFilePath;
     }
 
     public List<TestCaseItemDto> getTestCaseItemDtoList() {
@@ -21,5 +27,13 @@ public class OneTestBuildParamDto {
 
     public WebDriver getWebDriver() {
         return webDriver;
+    }
+
+    public String getTestResultFilePath() {
+        return testResultFilePath;
+    }
+
+    public void setTestResultFilePath(String testResultFilePath) {
+        this.testResultFilePath = testResultFilePath;
     }
 }

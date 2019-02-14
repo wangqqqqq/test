@@ -4,6 +4,8 @@ import com.tron.automation.core.OperateResult;
 import com.tron.automation.core.OperationGroup;
 import com.tron.automation.core.Result;
 import com.tron.automation.util.ExcelUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +16,7 @@ import java.util.Map;
  * 测试用例
  */
 public class TestCase {
+    private static final Logger log = LoggerFactory.getLogger(OperationGroup.class);
     /**
      * 操作组
      */
@@ -28,6 +31,11 @@ public class TestCase {
      * 操作结果与预期结果处理者
      */
     private TestResultHandler testResultHandler;
+
+    /**
+     * 测试结果文件路径
+     */
+    private String testResultFilePath;
 
     public OperationGroup getOperationGroup() {
         return operationGroup;
@@ -62,12 +70,14 @@ public class TestCase {
         Result handlerResult = testResultHandler.handler(operateResultList, expectedResult);
 
         // 往excel中输出测试结果
+        log.info("开始输出测试结果");
         List<Map> mapList = new ArrayList<Map>();
         Map<String, String> map = new HashMap<String, String>();
         map.put("isSuccess", handlerResult.getSuccess().equals(true) ? "SUCCESS" : "FAIL");
-        map.put("code", handlerResult.getCode().toString());
-        map.put("message",handlerResult.getMessage());
-        ExcelUtil.writeExcel(mapList, 3, "");
+        map.put("code", handlerResult.getCode() == null ? "" : handlerResult.getCode().toString());
+        map.put("message", handlerResult.getMessage() == null ? "" : handlerResult.getMessage());
+        mapList.add(map);
+        ExcelUtil.writeExcel(mapList, 3, "/Users/wqq/Documents/trondice-testResult.xlsx");
 
         return handlerResult;
 
