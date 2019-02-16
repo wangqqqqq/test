@@ -10,6 +10,7 @@ import com.tron.automation.enums.ParamTypeEnum;
 import com.tron.automation.enums.PositionTypeEnum;
 import com.tron.automation.test.OneTest;
 import com.tron.automation.test.TestCase;
+import com.tron.automation.test.TestResultHandler;
 import com.tron.automation.test.TestResultHandlerImpl;
 
 import java.util.ArrayList;
@@ -19,6 +20,15 @@ public class DefaultOneTestBuilder implements OneTestBuilder<OneTestBuildParamDt
     private OneTest oneTest = new OneTest();
 
     private OneTestBuildParamDto oneTestBuildParamDto;
+
+    private TestResultHandler testResultHandler;
+
+    public DefaultOneTestBuilder(TestResultHandler testResultHandler) {
+        this.testResultHandler = testResultHandler;
+    }
+
+    public DefaultOneTestBuilder() {
+    }
 
     @Override
     public void setBuilderParam(OneTestBuildParamDto oneTestBuildParamDto) {
@@ -62,7 +72,11 @@ public class DefaultOneTestBuilder implements OneTestBuilder<OneTestBuildParamDt
             TestCaseItemDto testCaseItemDto = testCaseItemDtoList.get(i);
 
             testCase.setExpectedResult(testCaseItemDto.getExpectedResultValue());
-            testCase.setTestResultHandler(new TestResultHandlerImpl());
+            if (testResultHandler == null) {
+                testCase.setTestResultHandler(new TestResultHandlerImpl());
+            } else {
+                testCase.setTestResultHandler(testResultHandler);
+            }
 
             OperationGroup operationGroup = new OperationGroup();
             operationGroup.setContext(context);

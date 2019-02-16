@@ -1,15 +1,15 @@
-package com.tron.automation.test;
+package com.tron.test;
 
-import com.tron.automation.factory.builder.DefaultOneTestBuilder;
+import com.tron.automation.test.AutomaticTester;
+import com.tron.automation.test.TronDiceTestCaseFileParseImpl;
 
-public class Test1 {
+public class Test {
     public static void main(String[] args) {
         AutomaticTester automaticTester = new AutomaticTester();
         automaticTester.setUserDataDir("--user-data-dir=/Users/wqq/Library/Application Support/Google/Chrome/");
-        automaticTester.setUrl("http://47.90.249.61:8080/");
+        automaticTester.setUrl("https://www.baidu.com/");
         automaticTester.setChromeDriverServiceUrl("/Users/wqq/Downloads/chromedriver");
-        automaticTester.setTestCaseFilePath("/Users/wqq/Documents/trondice-testcase.xlsx");
-        automaticTester.setOneTestBuilder(new DefaultOneTestBuilder(new TestResultHandlerImpl()));
+        automaticTester.setTestCaseFilePath("/Users/wqq/Documents/trondice-testcase2.xlsx");
         automaticTester.setTestCaseFileParse(new TronDiceTestCaseFileParseImpl());
 
         automaticTester.startUp();

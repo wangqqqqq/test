@@ -1,8 +1,10 @@
 package com.tron.automation.test;
 
+import com.tron.automation.core.OneOperation;
 import com.tron.automation.dto.OneTestBuildParamDto;
 import com.tron.automation.dto.TestCaseItemDto;
 import com.tron.automation.factory.builder.DefaultOneTestBuilder;
+import com.tron.automation.factory.builder.OneTestBuilder;
 import com.tron.automation.factory.builder.OneTestDirector;
 import com.tron.automation.util.ExcelUtil;
 import com.tron.automation.util.converter.TestCaseItemConverter;
@@ -14,7 +16,7 @@ import java.util.List;
 public class TronDiceTestCaseFileParseImpl implements TestCaseFileParse {
 
     @Override
-    public OneTest parse(String filePath, WebDriver webDriver) {
+    public OneTest parse(String filePath, WebDriver webDriver, OneTestBuilder oneTestBuilder) {
         List<List> list = ExcelUtil.readExcel(new File(filePath));
         list.remove(0);
 
@@ -22,7 +24,7 @@ public class TronDiceTestCaseFileParseImpl implements TestCaseFileParse {
         String testResultFilePath = filePath.replace("testcase", "testResult");
         OneTestBuildParamDto oneTestBuildParamDto = new OneTestBuildParamDto(testCaseItemDtoList, webDriver, testResultFilePath);
 
-        OneTest oneTest = OneTestDirector.createOneTest(new DefaultOneTestBuilder(), oneTestBuildParamDto);
+        OneTest oneTest = OneTestDirector.createOneTest(oneTestBuilder, oneTestBuildParamDto);
 
         return oneTest;
     }

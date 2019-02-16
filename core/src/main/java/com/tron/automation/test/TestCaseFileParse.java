@@ -1,5 +1,7 @@
 package com.tron.automation.test;
 
+import com.tron.automation.core.OneOperation;
+import com.tron.automation.factory.builder.OneTestBuilder;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
@@ -14,5 +16,5 @@ public interface TestCaseFileParse {
      * @param filePath
      * @return
      */
-    OneTest parse(String filePath, WebDriver webDriver);
+    OneTest parse(String filePath, WebDriver webDriver, OneTestBuilder oneTestBuilder);
 }

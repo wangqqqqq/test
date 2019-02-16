@@ -1,5 +1,7 @@
 package com.tron.automation.test;
 
+import com.tron.automation.factory.builder.DefaultOneTestBuilder;
+import com.tron.automation.factory.builder.OneTestBuilder;
 import com.tron.automation.util.SleepUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -45,13 +47,18 @@ public class AutomaticTester {
      */
     private WebDriver driver;
 
+    private OneTestBuilder oneTestBuilder;
+
     /**
      * 启动测试
      */
     public void startUp() {
         init();
 
-        OneTest oneTest = testCaseFileParse.parse(testCaseFilePath, driver);
+        if (oneTestBuilder == null) {
+            oneTestBuilder = new DefaultOneTestBuilder();
+        }
+        OneTest oneTest = testCaseFileParse.parse(testCaseFilePath, driver, oneTestBuilder);
         oneTest.start();
 
 //        driver.quit();
@@ -72,6 +79,13 @@ public class AutomaticTester {
         SleepUtil.sleep(7000);
     }
 
+    public OneTestBuilder getOneTestBuilder() {
+        return oneTestBuilder;
+    }
+
+    public void setOneTestBuilder(OneTestBuilder oneTestBuilder) {
+        this.oneTestBuilder = oneTestBuilder;
+    }
 
     public TestCaseFileParse getTestCaseFileParse() {
         return testCaseFileParse;
