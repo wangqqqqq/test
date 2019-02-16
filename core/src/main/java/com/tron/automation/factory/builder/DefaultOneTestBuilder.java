@@ -8,6 +8,7 @@ import com.tron.automation.dto.TestCaseItemDto;
 import com.tron.automation.enums.OrderTypeEnum;
 import com.tron.automation.enums.ParamTypeEnum;
 import com.tron.automation.enums.PositionTypeEnum;
+import com.tron.automation.factory.OneOperationFactory;
 import com.tron.automation.test.OneTest;
 import com.tron.automation.test.TestCase;
 import com.tron.automation.test.TestResultHandler;
@@ -84,7 +85,7 @@ public class DefaultOneTestBuilder implements OneTestBuilder<OneTestBuildParamDt
             List<OperateDescriptionDto> operateDescriptionDtoList = testCaseItemDto.getOperateDescriptionDtoList();
             List<OneOperation> oneOperationList = new ArrayList<OneOperation>();
             for (OperateDescriptionDto operateDescriptionDto: operateDescriptionDtoList) {
-                OneOperation oneOperation = new DefaultOneOperation();
+                OneOperation oneOperation = OneOperationFactory.create(operateDescriptionDto.getOperationType());
                 oneOperationList.add(oneOperation);
             }
             operationGroup.setOneOperationList(oneOperationList);
