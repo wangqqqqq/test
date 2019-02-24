@@ -37,6 +37,13 @@ public class OperateResult extends Result{
         return operateResult;
     }
 
+    public static OperateResult buildFailResult(String message){
+        OperateResult operateResult = new OperateResult();
+        operateResult.setSuccess(false);
+        operateResult.setMessage(message);
+        return operateResult;
+    }
+
     public static OperateResult buildElementNotExistResult(){
         OperateResult operateResult = new OperateResult();
         operateResult.setSuccess(false);

@@ -12,6 +12,8 @@ public abstract class OneOperation implements Operate {
 
     protected Param param;
 
+    protected Integer waitTime;
+
     /**
      * 执行操作之前做的事情
      */
@@ -57,5 +59,13 @@ public abstract class OneOperation implements Operate {
 
     public void setParam(Param param) {
         this.param = param;
+    }
+
+    public Integer getWaitTime() {
+        return waitTime;
+    }
+
+    public void setWaitTime(Integer waitTime) {
+        this.waitTime = waitTime;
     }
 }

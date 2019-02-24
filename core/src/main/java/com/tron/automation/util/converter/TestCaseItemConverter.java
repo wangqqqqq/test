@@ -17,10 +17,10 @@ public class TestCaseItemConverter {
 
         for (List<String> values : list) {
             TestCaseItemDto testCaseItemDto = new TestCaseItemDto();
-//            JSON.
             List<OperateDescriptionDto> operateDescriptionDtos = JSON.parseArray(values.get(0), OperateDescriptionDto.class);
             testCaseItemDto.setOperateDescriptionDtoList(operateDescriptionDtos);
-            testCaseItemDto.setExpectedResultValue(values.get(1));
+            System.out.println("values.size():"+values.size());
+            testCaseItemDto.setExpectedResultValue(values.size() > 1 ? values.get(1) : "");
 
             testCaseItemDtoList.add(testCaseItemDto);
         }

@@ -54,17 +54,20 @@ public class DefaultOneTestBuilder implements OneTestBuilder<OneTestBuildParamDt
                 OperateDescriptionDto operateDescriptionDto = operateDescriptionDtoList.get(j);
 
                 oneOperation.setOrder(OrderTypeEnum.valueOf(operateDescriptionDto.getOrderType()).getOrder());
-                if ((!operateDescriptionDto.getParam().equals(""))&&(!operateDescriptionDto.getParamType().equals(""))) {
+                if ((operateDescriptionDto.getParam() != null) && (operateDescriptionDto.getParamType() != null)) {
                     oneOperation.setParam(new Param(operateDescriptionDto.getParam(), ParamTypeEnum.valueOf(operateDescriptionDto.getParamType())));
                 }
-                oneOperation.setPosition(new Position(PositionTypeEnum.valueOf(operateDescriptionDto.getPositionType()),operateDescriptionDto.getPositionUrl()));
+                oneOperation.setPosition(new Position(PositionTypeEnum.valueOf(operateDescriptionDto.getPositionType()), operateDescriptionDto.getPositionUrl()));
+                if (operateDescriptionDto.getWaitTime() != null) {
+                    oneOperation.setWaitTime(operateDescriptionDto.getWaitTime());
+                }
             }
         }
     }
 
     @Override
     public void buildOperationGroup() {
-        Context context = new Context(oneTestBuildParamDto.getWebDriver());
+        Context context = new Context(oneTestBuildParamDto.getWebDriver(), oneTestBuildParamDto.getScreen());
 
         List<TestCase> testCaseList = oneTest.getTestCaseList();
         List<TestCaseItemDto> testCaseItemDtoList = oneTestBuildParamDto.getTestCaseItemDtoList();
@@ -84,7 +87,7 @@ public class DefaultOneTestBuilder implements OneTestBuilder<OneTestBuildParamDt
 
             List<OperateDescriptionDto> operateDescriptionDtoList = testCaseItemDto.getOperateDescriptionDtoList();
             List<OneOperation> oneOperationList = new ArrayList<OneOperation>();
-            for (OperateDescriptionDto operateDescriptionDto: operateDescriptionDtoList) {
+            for (OperateDescriptionDto operateDescriptionDto : operateDescriptionDtoList) {
                 OneOperation oneOperation = OneOperationFactory.create(operateDescriptionDto.getOperationType());
                 oneOperationList.add(oneOperation);
             }
@@ -97,8 +100,9 @@ public class DefaultOneTestBuilder implements OneTestBuilder<OneTestBuildParamDt
     public void buildTestCase() {
         List<TestCase> testCases = new ArrayList<TestCase>();
         List<TestCaseItemDto> testCaseItemDtoList = oneTestBuildParamDto.getTestCaseItemDtoList();
-        for (TestCaseItemDto testCaseItemDto: testCaseItemDtoList) {
+        for (TestCaseItemDto testCaseItemDto : testCaseItemDtoList) {
             TestCase testCase = new TestCase();
+            testCase.setTestResultFilePath(oneTestBuildParamDto.getTestResultFilePath());
             testCases.add(testCase);
         }
 

@@ -14,6 +14,7 @@ public class GetTextOrder implements GetOrder {
         WebElement element = position.getElement(context.driver);
         if(element==null) {
             context.addOperateResult(OperateResult.buildElementNotExistResult());
+            return;
         }
 
         String text = element.getText();

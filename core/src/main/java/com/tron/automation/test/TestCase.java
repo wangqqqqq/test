@@ -61,6 +61,14 @@ public class TestCase {
         this.testResultHandler = testResultHandler;
     }
 
+    public String getTestResultFilePath() {
+        return testResultFilePath;
+    }
+
+    public void setTestResultFilePath(String testResultFilePath) {
+        this.testResultFilePath = testResultFilePath;
+    }
+
     /**
      * 生成测试结果
      */
@@ -77,7 +85,7 @@ public class TestCase {
         map.put("code", handlerResult.getCode() == null ? "" : handlerResult.getCode().toString());
         map.put("message", handlerResult.getMessage() == null ? "" : handlerResult.getMessage());
         mapList.add(map);
-        ExcelUtil.writeExcel(mapList, 3, "/Users/wqq/Documents/trondice-testResult.xlsx");
+        ExcelUtil.writeExcel(mapList, 3, testResultFilePath);
 
         return handlerResult;
 

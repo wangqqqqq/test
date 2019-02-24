@@ -4,6 +4,7 @@ import com.tron.automation.core.Context;
 import com.tron.automation.core.OneOperation;
 import com.tron.automation.core.OperateResult;
 import com.tron.automation.core.OperationGroup;
+import com.tron.automation.util.SleepUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +21,10 @@ public class DefaultOneOperation extends OneOperation {
 
     @Override
     public void end() {
-
+        SleepUtil.sleep(500);
+        if (getWaitTime() != null) {
+            SleepUtil.sleep(getWaitTime());
+        }
     }
 
     @Override
@@ -29,7 +33,7 @@ public class DefaultOneOperation extends OneOperation {
             order.execute(position, param, context);
         } catch (Exception e) {
             context.addOperateResult(OperateResult.buildFailResult());
-            log.error("执行命令时出现异常", e.getStackTrace());
+            log.error("执行命令时出现异常", e);
         }
 
 

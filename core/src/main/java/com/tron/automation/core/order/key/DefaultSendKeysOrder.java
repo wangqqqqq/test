@@ -14,6 +14,7 @@ public class DefaultSendKeysOrder implements KeyboardOrder {
         WebElement element = position.getElement(context.driver);
         if(element==null) {
             context.addOperateResult(OperateResult.buildElementNotExistResult());
+            return;
         }
 
         element.sendKeys(param.data);

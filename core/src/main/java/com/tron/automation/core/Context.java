@@ -2,6 +2,7 @@ package com.tron.automation.core;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.sikuli.script.Screen;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,18 +17,21 @@ public class Context {
     public Actions actions;
 
     /**
-     *  浏览器驱动
+     * 浏览器驱动
      */
     public WebDriver driver;
+
+    public Screen screen;
 
     /**
      * 操作结果
      */
     public List<OperateResult> operateResultList = new ArrayList<OperateResult>();
 
-    public Context(WebDriver driver) {
+    public Context(WebDriver driver, Screen screen) {
         this.driver = driver;
         this.actions = new Actions(driver);
+        this.screen = screen;
     }
 
     public Actions getActions() {
@@ -46,6 +50,14 @@ public class Context {
         this.driver = driver;
     }
 
+    public Screen getScreen() {
+        return screen;
+    }
+
+    public void setScreen(Screen screen) {
+        this.screen = screen;
+    }
+
     public List<OperateResult> getOperateResultList() {
         return operateResultList;
     }
@@ -56,6 +68,7 @@ public class Context {
 
     /**
      * 添加操作结果
+     *
      * @param operateResult
      */
     public void addOperateResult(OperateResult operateResult) {

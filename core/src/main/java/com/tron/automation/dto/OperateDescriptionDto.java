@@ -16,6 +16,8 @@ public class OperateDescriptionDto {
 
     private String operationType;
 
+    private Integer waitTime;
+
     public String getPositionType() {
         return positionType;
     }
@@ -62,5 +64,13 @@ public class OperateDescriptionDto {
 
     public void setOperationType(String operationType) {
         this.operationType = operationType;
+    }
+
+    public Integer getWaitTime() {
+        return waitTime;
+    }
+
+    public void setWaitTime(Integer waitTime) {
+        this.waitTime = waitTime;
     }
 }

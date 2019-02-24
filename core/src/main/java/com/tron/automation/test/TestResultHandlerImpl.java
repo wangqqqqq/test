@@ -13,7 +13,7 @@ public class TestResultHandlerImpl implements TestResultHandler {
         for (int i = 0; i < operateResults.size(); i++) {
             OperateResult operateResult = operateResults.get(i);
             Boolean success = operateResult.getSuccess();
-            if(!success) {
+            if (!success) {
                 result.setSuccess(success);
                 result.setCode(operateResult.getCode());
                 result.setMessage(operateResult.getMessage());
@@ -21,7 +21,7 @@ public class TestResultHandlerImpl implements TestResultHandler {
                 // 待补充
             }
         }
-        
+
         return result;
     }
 }

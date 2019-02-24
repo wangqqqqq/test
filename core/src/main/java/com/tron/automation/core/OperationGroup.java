@@ -23,7 +23,7 @@ public class OperationGroup{
     public void executeNextOperate() {
         if (next >= 0 && next < oneOperationList.size()) {
             next++;
-            log.info("第{}个操作 --------> begin",next);
+//            log.info("第{}个操作 --------> begin",next);
             oneOperationList.get(next-1).executeOperate(this);
 
         }
