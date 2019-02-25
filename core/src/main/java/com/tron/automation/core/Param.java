@@ -20,9 +20,8 @@ public class Param {
      */
     public ParamTypeEnum type;
 
-    public Param(String data, ParamTypeEnum type) {
+    public Param(String data) {
         this.data = data;
-        this.type = type;
     }
 
     public Object getParam(){

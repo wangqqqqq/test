@@ -54,7 +54,7 @@ public class TronDIceOneTestBuilder implements OneTestBuilder<OneTestBuildParamD
 
                 oneOperation.setOrder(OrderTypeEnum.valueOf(operateDescriptionDto.getOrderType()).getOrder());
                 if ((!operateDescriptionDto.getParam().equals("")) && (!operateDescriptionDto.getParamType().equals(""))) {
-                    oneOperation.setParam(new Param(operateDescriptionDto.getParam(), ParamTypeEnum.valueOf(operateDescriptionDto.getParamType())));
+                    oneOperation.setParam(new Param(operateDescriptionDto.getParam()));
                 }
                 oneOperation.setPosition(new Position(PositionTypeEnum.valueOf(operateDescriptionDto.getPositionType()), operateDescriptionDto.getPositionUrl()));
             }

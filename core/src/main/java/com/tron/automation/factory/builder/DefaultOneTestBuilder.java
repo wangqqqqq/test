@@ -54,8 +54,8 @@ public class DefaultOneTestBuilder implements OneTestBuilder<OneTestBuildParamDt
                 OperateDescriptionDto operateDescriptionDto = operateDescriptionDtoList.get(j);
 
                 oneOperation.setOrder(OrderTypeEnum.valueOf(operateDescriptionDto.getOrderType()).getOrder());
-                if ((operateDescriptionDto.getParam() != null) && (operateDescriptionDto.getParamType() != null)) {
-                    oneOperation.setParam(new Param(operateDescriptionDto.getParam(), ParamTypeEnum.valueOf(operateDescriptionDto.getParamType())));
+                if ((operateDescriptionDto.getParam() != null)) {
+                    oneOperation.setParam(new Param(operateDescriptionDto.getParam()));
                 }
                 oneOperation.setPosition(new Position(PositionTypeEnum.valueOf(operateDescriptionDto.getPositionType()), operateDescriptionDto.getPositionUrl()));
                 if (operateDescriptionDto.getWaitTime() != null) {
@@ -67,11 +67,11 @@ public class DefaultOneTestBuilder implements OneTestBuilder<OneTestBuildParamDt
 
     @Override
     public void buildOperationGroup() {
-        Context context = new Context(oneTestBuildParamDto.getWebDriver(), oneTestBuildParamDto.getScreen());
 
         List<TestCase> testCaseList = oneTest.getTestCaseList();
         List<TestCaseItemDto> testCaseItemDtoList = oneTestBuildParamDto.getTestCaseItemDtoList();
         for (int i = 0; i < testCaseList.size(); i++) {
+            Context context = new Context(oneTestBuildParamDto.getWebDriver(), oneTestBuildParamDto.getScreen());
             TestCase testCase = testCaseList.get(i);
             TestCaseItemDto testCaseItemDto = testCaseItemDtoList.get(i);
 

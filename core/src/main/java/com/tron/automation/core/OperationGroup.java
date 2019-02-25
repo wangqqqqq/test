@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 /**
- *  操作组 一条测试用例对应一组操作 一组测试用例生成一条测试结果
+ *  操作组 一条测试用例对应一组操作 一组操作生成一条测试结果
  */
 public class OperationGroup{
     private static final Logger log = LoggerFactory.getLogger(OperationGroup.class);

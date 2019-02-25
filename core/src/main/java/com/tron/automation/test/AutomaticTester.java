@@ -62,7 +62,7 @@ public class AutomaticTester {
         OneTest oneTest = testCaseFileParse.parse(testCaseFilePath, driver, screen,oneTestBuilder);
         oneTest.start();
 
-//        driver.quit();
+        driver.quit();
     }
 
     /**

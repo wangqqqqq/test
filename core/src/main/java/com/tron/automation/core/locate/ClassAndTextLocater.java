@@ -17,7 +17,7 @@ public class ClassAndTextLocater implements Locate {
 
     @Override
     public WebElement goToLocate(String positionUrl, WebDriver driver) {
-        String[] split = positionUrl.split("?");
+        String[] split = positionUrl.split("[?]");
         List<WebElement> elements = driver.findElements(By.className(split[0]));
         for (WebElement webElement : elements) {
             String text = webElement.getText();

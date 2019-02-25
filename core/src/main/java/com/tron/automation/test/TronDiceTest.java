@@ -2,7 +2,7 @@ package com.tron.automation.test;
 
 import com.tron.automation.factory.builder.DefaultOneTestBuilder;
 
-public class Test1 {
+public class TronDiceTest {
     public static void main(String[] args) {
         AutomaticTester automaticTester = new AutomaticTester();
         automaticTester.setUserDataDir("--user-data-dir=/Users/wqq/Library/Application Support/Google/Chrome/");
